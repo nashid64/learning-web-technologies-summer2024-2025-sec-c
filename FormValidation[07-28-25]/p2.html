@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email </title>
+</head>
+<body>
+    <form onsubmit="return emailCheck();">
+        <table>
+            <tr>
+                <td>Email</td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="email" type="text" onblur="emailCheck()">
+                    <p id="emailError" style="color: red;"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function emailCheck() {
+            const emailInput = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+
+            if (emailInput === "") {
+                emailError.textContent = "Please type your email!";
+                return false;
+            } 
+            else if (
+                !emailInput.includes("@") ||!emailInput.includes(".") ||emailInput.indexOf("@") === 0 ||emailInput.lastIndexOf(".") < emailInput.indexOf("@")
+             ) 
+             
+             {
+                emailError.textContent = "Please enter a valid email (e.g., anything@example.com)";
+                return false;
+            } 
+
+            else {
+                emailError.textContent = "";
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
