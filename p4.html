@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Degree</title>
+</head>
+<body>
+    <form onsubmit="return degreeCheck();">
+        <table>
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>Degree</legend> 
+                        <input type="radio" id="SSC" name="deg" value="SSC">
+
+                        <label for="SSC">SSC</label>
+                          <input type="radio" id="HSC" name="deg" value="HSC">
+                        <label for="HSC">HSC</label> 
+                          <input type="radio" id="BSc" name="deg" value="BSc">
+                        <label for="BSc">BSc</label> 
+                             <p id="DegreeError" style="color: red;"></p> 
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+
+    <script>
+        function degreeCheck() {
+            const DegreeOptions = document.getElementsByName("deg");
+             const DegreeError = document.getElementById("DegreeError"); 
+              let isSelected = false;
+
+            for (let i = 0; i < DegreeOptions.length; i++) {
+                if (DegreeOptions[i].checked) {
+              isSelected = true;
+                    break;
+                }
+            }
+
+
+
+            if (!isSelected) {
+                DegreeError.textContent = "Please select your degree to continue.";
+                 return false;
+            } else {
+                DegreeError.textContent = "";
+             return true;
+            }
+        }
+    </script>
+</body>
+</html>

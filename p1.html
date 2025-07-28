@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Name Page</title>
+</head>
+<body>
+    <form onsubmit="return nameCheck();">
+        <table>
+            <tr>
+                <td>Name</td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="name" type="text" onblur="nameCheck()">
+                    <p id="nameError" style="color: red;"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function nameCheck() {
+            const nameInput = document.getElementById('name').value;
+            const nameError = document.getElementById('nameError');
+
+            if (nameInput === "") {
+                nameError.textContent = "Please type your name!";
+                return false;
+            } 
+            else if (nameInput.length < 2) {
+                nameError.textContent = "Name must contain at least two words.";
+                return false;
+            } 
+             
+            else {
+                nameError.textContent = "";
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
